@@ -4,110 +4,91 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Last Word</title>
-<meta name="description" content="Last Word — creative and production for live events.">
+<meta name="description" content="Last Word — live experiences & creative.">
 <meta property="og:title" content="Last Word">
-<meta property="og:description" content="Creative &amp; production for live events.">
-<meta name="theme-color" content="#2A2C25">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 200'%3E%3Crect x='-40' y='0' width='200' height='200' fill='%232A2C25'/%3E%3Cg transform='rotate(18 60 100)'%3E%3Ccircle cx='60' cy='14' r='8' fill='none' stroke='%23F4F1EA' stroke-width='9'/%3E%3Cline x1='60' y1='22' x2='60' y2='190' stroke='%23F4F1EA' stroke-width='9' stroke-linecap='round'/%3E%3Ccircle cx='60' cy='112' r='30' fill='%23F4F1EA'/%3E%3C/g%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Jost:wght@400;500&display=swap">
+<meta property="og:description" content="Live experiences &amp; creative.">
+<meta property="og:image" content="card-hero.jpg">
+<meta name="theme-color" content="#E6DED5">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%233B4033'/%3E%3C/svg%3E">
+<link rel="preload" as="image" href="card-hero.webp" type="image/webp">
 <style>
   *,*::before,*::after{box-sizing:border-box}
-  html,body{margin:0;height:100%}
-  body{
-    background:#2A2C25;
-    color:#F4F1EA;
-    font-family:"Jost",system-ui,sans-serif;
-    -webkit-font-smoothing:antialiased;
+  html,body{margin:0;height:100%;background:#E3DBD2;overflow:hidden}
+
+  .stage{
+    position:fixed;inset:0;overflow:hidden;
+    /* table tone continues past the photo edges on tall screens */
+    background:linear-gradient(180deg,#EBE3DA 0%,#E2D9CF 55%,#D9D0C5 100%);
   }
-  .page{
-    position:relative;
-    min-height:100vh;
-    min-height:100svh;
-    display:flex;
-    flex-direction:column;
-    overflow:hidden;
+
+  /* the photograph */
+  .photo{
+    position:absolute;left:50%;top:50%;
+    width:max(100vw, 150vh);            /* cover on wide screens */
+    aspect-ratio:1728/1152;
+    transform:translate(-50%,-50%);
+    animation:breathe 38s ease-in-out infinite alternate;
+    will-change:transform;
   }
-  .grain{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.35;mix-blend-mode:soft-light}
-  .top{
-    position:relative;
-    display:flex;
-    justify-content:flex-end;
-    padding:28px clamp(16px,2vw,28px) 20px;
-    font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
-    color:#C9C7BC;
+  .photo picture,.photo img{display:block;width:100%;height:100%}
+  .photo img{object-fit:cover;opacity:0;animation:arrive 2.4s cubic-bezier(.25,.6,.3,1) .15s forwards}
+
+  /* tall screens: keep the whole card in view and let the table run past the photo */
+  @media (max-aspect-ratio: 1/1){
+    .photo{width:235vw}
+    .photo img{
+      -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 86%,transparent 100%);
+              mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 86%,transparent 100%);
+    }
   }
-  h1{
-    position:relative;
-    margin:0;
-    padding:0 1vw;
-    text-align:center;
-    font-family:"Gilda Display",Georgia,serif;
-    font-weight:400;
-    font-size:14.6vw;
-    line-height:.86;
-    letter-spacing:-.015em;
-    white-space:nowrap;
-    padding-top:clamp(28px,3vw,44px);
+
+  /* passing light, like a cloud moving past the window */
+  .weather{
+    position:absolute;inset:-20%;pointer-events:none;
+    background:linear-gradient(115deg, rgba(60,48,36,0) 30%, rgba(60,48,36,.10) 50%, rgba(60,48,36,0) 70%);
+    mix-blend-mode:multiply;opacity:0;
+    animation:cloud 26s ease-in-out 3s infinite;
   }
-  h1 br{display:none}
-  .spacer{flex:1}
-  .tagline{
-    position:relative;
-    margin:0;
-    padding:0 24px 64px;
-    text-align:center;
-    font-family:"Gilda Display",Georgia,serif;
-    font-size:clamp(28px,2.8vw,44px);
-    line-height:1.1;
+
+  /* living film grain */
+  .grain{
+    position:absolute;inset:-50%;width:200%;height:200%;pointer-events:none;opacity:.10;mix-blend-mode:multiply;
+    animation:grain 1.2s steps(6) infinite;
   }
-  .tagline br{display:none}
-  .corner{position:absolute;bottom:24px;color:#C9C7BC}
-  .corner.left{left:clamp(16px,2vw,28px);line-height:0}
-  .corner.right{right:clamp(16px,2vw,28px);font-size:10px;letter-spacing:.2em;text-transform:uppercase}
-  @media (max-width:640px){
-    .top{padding:24px 16px 12px}
-    h1{font-size:27vw;line-height:.86;padding-top:36px}
-    h1 br{display:inline}
-    .tagline{font-size:28px;line-height:1.12}
-    .tagline br{display:inline}
-    .corner{bottom:22px}
-    .corner.left{left:16px}
-    .corner.right{right:16px}
+
+  @keyframes arrive{from{opacity:0;filter:blur(6px) brightness(1.08)}to{opacity:1;filter:none}}
+  @keyframes breathe{
+    0%  {transform:translate(-50%,-50%) scale(1.000) rotate(0deg)}
+    50% {transform:translate(-50.4%,-49.7%) scale(1.018) rotate(.12deg)}
+    100%{transform:translate(-49.7%,-50.3%) scale(1.032) rotate(-.08deg)}
+  }
+  @keyframes cloud{
+    0%  {opacity:0;transform:translateX(-18%)}
+    45% {opacity:1}
+    100%{opacity:0;transform:translateX(18%)}
+  }
+  @keyframes grain{
+    0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}
+    60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,2%)}100%{transform:translate(0,0)}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .photo,.weather,.grain{animation:none}
+    .photo img{animation:none;opacity:1}
+    .weather{display:none}
   }
 </style>
 </head>
 <body>
-<div class="page">
-  <svg class="grain" aria-hidden="true"><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#grain)"/></svg>
-
-  <h1 aria-label="Last Word">LAST<br> WORD</h1>
-
-  <div class="spacer"></div>
-
-  <p class="tagline">Creative &amp; production<br> for live events.</p>
-
-  <div class="corner left">
-    <svg width="12" height="20" viewBox="0 0 120 200" aria-hidden="true"><g transform="rotate(18 60 100)"><circle cx="60" cy="14" r="8" fill="none" stroke="#C9C7BC" stroke-width="9"/><line x1="60" y1="22" x2="60" y2="190" stroke="#C9C7BC" stroke-width="9" stroke-linecap="round"/><circle cx="60" cy="112" r="30" fill="#C9C7BC"/></g></svg>
+<main class="stage">
+  <div class="photo">
+    <picture>
+      <source srcset="card-hero.webp" type="image/webp">
+      <img src="card-hero.jpg" width="1728" height="1152" alt="A Last Word business card, olive green with embossed lettering reading Last Word, Live Experiences &amp; Creative, resting on a sunlit table.">
+    </picture>
   </div>
-  <div class="corner right">lastword.nyc</div>
-</div>
-<script>
-  // Safety net: if the name is ever wider than the screen, shrink it to fit.
-  (function(){
-    var h=document.querySelector('h1');
-    function fit(){
-      h.style.fontSize='';
-      var avail=h.clientWidth-8, need=h.scrollWidth;
-      if(need>avail){
-        var cur=parseFloat(getComputedStyle(h).fontSize);
-        h.style.fontSize=(cur*avail/need)+'px';
-      }
-    }
-    (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(fit);
-    window.addEventListener('resize',fit);
-  })();
-</script>
+  <div class="weather" aria-hidden="true"></div>
+  <svg class="grain" aria-hidden="true"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#g)"/></svg>
+</main>
 </body>
 </html>
