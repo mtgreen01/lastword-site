@@ -4,91 +4,43 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Last Word</title>
-<meta name="description" content="Last Word — live experiences & creative.">
+<meta name="description" content="Last Word">
 <meta property="og:title" content="Last Word">
-<meta property="og:description" content="Live experiences &amp; creative.">
-<meta property="og:image" content="card-hero.jpg">
-<meta name="theme-color" content="#E6DED5">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%233B4033'/%3E%3C/svg%3E">
-<link rel="preload" as="image" href="card-hero.webp" type="image/webp">
+<meta property="og:site_name" content="Last Word">
+<meta name="theme-color" content="#2A2C25">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 200'%3E%3Crect x='-40' y='0' width='200' height='200' fill='%232A2C25'/%3E%3Cg transform='rotate(18 60 100)'%3E%3Ccircle cx='60' cy='14' r='8' fill='none' stroke='%23F4F1EA' stroke-width='9'/%3E%3Cline x1='60' y1='22' x2='60' y2='190' stroke='%23F4F1EA' stroke-width='9' stroke-linecap='round'/%3E%3Ccircle cx='60' cy='112' r='30' fill='%23F4F1EA'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gilda+Display&display=swap">
 <style>
   *,*::before,*::after{box-sizing:border-box}
-  html,body{margin:0;height:100%;background:#E3DBD2;overflow:hidden}
-
-  .stage{
-    position:fixed;inset:0;overflow:hidden;
-    /* table tone continues past the photo edges on tall screens */
-    background:linear-gradient(180deg,#EBE3DA 0%,#E2D9CF 55%,#D9D0C5 100%);
+  html,body{margin:0;height:100%}
+  body{
+    background:#2A2C25;
+    color:#F4F1EA;
+    -webkit-font-smoothing:antialiased;
+    display:grid;
+    place-items:center;
+    min-height:100vh;
+    min-height:100svh;
   }
-
-  /* the photograph */
-  .photo{
-    position:absolute;left:50%;top:50%;
-    width:max(100vw, 150vh);            /* cover on wide screens */
-    aspect-ratio:1728/1152;
-    transform:translate(-50%,-50%);
-    animation:breathe 38s ease-in-out infinite alternate;
-    will-change:transform;
+  h1{
+    margin:0;
+    padding:0 24px;
+    font-family:"Gilda Display",Georgia,"Times New Roman",serif;
+    font-weight:400;
+    font-size:clamp(40px,7vw,96px);
+    line-height:1;
+    letter-spacing:-.01em;
+    white-space:nowrap;
+    opacity:0;
+    animation:in 1.6s ease .2s forwards;
   }
-  .photo picture,.photo img{display:block;width:100%;height:100%}
-  .photo img{object-fit:cover;opacity:0;animation:arrive 2.4s cubic-bezier(.25,.6,.3,1) .15s forwards}
-
-  /* tall screens: keep the whole card in view and let the table run past the photo */
-  @media (max-aspect-ratio: 1/1){
-    .photo{width:235vw}
-    .photo img{
-      -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 86%,transparent 100%);
-              mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 86%,transparent 100%);
-    }
-  }
-
-  /* passing light, like a cloud moving past the window */
-  .weather{
-    position:absolute;inset:-20%;pointer-events:none;
-    background:linear-gradient(115deg, rgba(60,48,36,0) 30%, rgba(60,48,36,.10) 50%, rgba(60,48,36,0) 70%);
-    mix-blend-mode:multiply;opacity:0;
-    animation:cloud 26s ease-in-out 3s infinite;
-  }
-
-  /* living film grain */
-  .grain{
-    position:absolute;inset:-50%;width:200%;height:200%;pointer-events:none;opacity:.10;mix-blend-mode:multiply;
-    animation:grain 1.2s steps(6) infinite;
-  }
-
-  @keyframes arrive{from{opacity:0;filter:blur(6px) brightness(1.08)}to{opacity:1;filter:none}}
-  @keyframes breathe{
-    0%  {transform:translate(-50%,-50%) scale(1.000) rotate(0deg)}
-    50% {transform:translate(-50.4%,-49.7%) scale(1.018) rotate(.12deg)}
-    100%{transform:translate(-49.7%,-50.3%) scale(1.032) rotate(-.08deg)}
-  }
-  @keyframes cloud{
-    0%  {opacity:0;transform:translateX(-18%)}
-    45% {opacity:1}
-    100%{opacity:0;transform:translateX(18%)}
-  }
-  @keyframes grain{
-    0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}
-    60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,2%)}100%{transform:translate(0,0)}
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    .photo,.weather,.grain{animation:none}
-    .photo img{animation:none;opacity:1}
-    .weather{display:none}
-  }
+  @keyframes in{to{opacity:1}}
+  @media (prefers-reduced-motion: reduce){h1{animation:none;opacity:1}}
 </style>
 </head>
 <body>
-<main class="stage">
-  <div class="photo">
-    <picture>
-      <source srcset="card-hero.webp" type="image/webp">
-      <img src="card-hero.jpg" width="1728" height="1152" alt="A Last Word business card, olive green with embossed lettering reading Last Word, Live Experiences &amp; Creative, resting on a sunlit table.">
-    </picture>
-  </div>
-  <div class="weather" aria-hidden="true"></div>
-  <svg class="grain" aria-hidden="true"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#g)"/></svg>
-</main>
+  <h1>Last Word</h1>
 </body>
 </html>
