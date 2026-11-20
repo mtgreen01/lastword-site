@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Last Word — Coming soon</title>
+<meta name="description" content="Last Word — creative and production for live events. Coming soon.">
+<meta property="og:title" content="Last Word">
+<meta property="og:description" content="Creative &amp; production for live events. Coming soon.">
+<meta name="theme-color" content="#2A2C25">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 200'%3E%3Crect x='-40' y='0' width='200' height='200' fill='%232A2C25'/%3E%3Cg transform='rotate(18 60 100)'%3E%3Ccircle cx='60' cy='14' r='8' fill='none' stroke='%23F4F1EA' stroke-width='9'/%3E%3Cline x1='60' y1='22' x2='60' y2='190' stroke='%23F4F1EA' stroke-width='9' stroke-linecap='round'/%3E%3Ccircle cx='60' cy='112' r='30' fill='%23F4F1EA'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Jost:wght@400;500&display=swap">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:#2A2C25;
+    color:#F4F1EA;
+    font-family:"Jost",system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{
+    position:relative;
+    min-height:100vh;
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+  }
+  .grain{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.35;mix-blend-mode:soft-light}
+  .top{
+    position:relative;
+    display:flex;
+    justify-content:flex-end;
+    padding:28px clamp(16px,2vw,28px) 20px;
+    font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+    color:#C9C7BC;
+  }
+  h1{
+    position:relative;
+    margin:0;
+    padding:0 1vw;
+    text-align:center;
+    font-family:"Gilda Display",Georgia,serif;
+    font-weight:400;
+    font-size:15.4vw;
+    line-height:.86;
+    letter-spacing:-.015em;
+    white-space:nowrap;
+  }
+  h1 br{display:none}
+  .spacer{flex:1}
+  .tagline{
+    position:relative;
+    margin:0;
+    padding:0 24px 64px;
+    text-align:center;
+    font-family:"Gilda Display",Georgia,serif;
+    font-size:clamp(28px,2.8vw,44px);
+    line-height:1.1;
+  }
+  .tagline br{display:none}
+  .corner{position:absolute;bottom:24px;color:#C9C7BC}
+  .corner.left{left:clamp(16px,2vw,28px);line-height:0}
+  .corner.right{right:clamp(16px,2vw,28px);font-size:10px;letter-spacing:.2em;text-transform:uppercase}
+  @media (max-width:640px){
+    .top{padding:24px 16px 12px}
+    h1{font-size:34vw;line-height:.84;margin-top:8px}
+    h1 br{display:inline}
+    .tagline{font-size:28px;line-height:1.12}
+    .tagline br{display:inline}
+    .corner{bottom:22px}
+    .corner.left{left:16px}
+    .corner.right{right:16px}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <svg class="grain" aria-hidden="true"><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#grain)"/></svg>
+
+  <div class="top">Coming soon</div>
+
+  <h1 aria-label="Last Word">LAST<br> WORD</h1>
+
+  <div class="spacer"></div>
+
+  <p class="tagline">Creative &amp; production<br> for live events.</p>
+
+  <div class="corner left">
+    <svg width="12" height="20" viewBox="0 0 120 200" aria-hidden="true"><g transform="rotate(18 60 100)"><circle cx="60" cy="14" r="8" fill="none" stroke="#C9C7BC" stroke-width="9"/><line x1="60" y1="22" x2="60" y2="190" stroke="#C9C7BC" stroke-width="9" stroke-linecap="round"/><circle cx="60" cy="112" r="30" fill="#C9C7BC"/></g></svg>
+  </div>
+  <div class="corner right">lastword.nyc</div>
+</div>
+</body>
+</html>
